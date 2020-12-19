@@ -29,6 +29,7 @@ public class TestController {
     @ApiOperation(value = "测试一个参数的接口", httpMethod = "GET", tags = {tags})
     public Response test(Long id) {
         Test test = testMapper.selectByPrimaryKey(id);
+        //测试
         return Response.succInstance(test);
     }
 
