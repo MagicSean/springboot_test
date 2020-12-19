@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--参考http://blog.csdn.net/autfish/article/details/51203709
+http://blog.csdn.net/autfish/article/details/51244787 -->
+<Configuration status="INFO" monitorInterval="300">
+    <properties>
+        <property name="LOG_HOME">logs</property>
+    </properties>
+    <Appenders>
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] [%d{yyyy-MM-dd HH:mm:ss}] [%C{1}:%M:%L] [%t] %msg%n" />
+            <Filters>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY" />
+            </Filters>
+        </Console>
+
+        <RollingRandomAccessFile name="INFO_FILE"
+                                 fileName="${LOG_HOME}/server.log"
+                                 filePattern="${LOG_HOME}/server.%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY" />
+            </Filters>
+            <PatternLayout
+                    pattern="[%-5level] [%d{yyyy-MM-dd HH:mm:ss}] [%C{1}:%M:%L] [%t] %msg%n" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" />
+                <SizeBasedTriggeringPolicy size="2048MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="7" />
+        </RollingRandomAccessFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="CONSOLE" />
+            <AppenderRef ref="INFO_FILE"/>
+        </Root>
+        <Logger name="org.springframework" level="info" additivity="true">
+        </Logger>
+        <Logger name="org.apache" level="error" additivity="true">
+        </Logger>
+        <Logger name="org.mybatis" level="error" additivity="true">
+        </Logger>
+        <Logger name="io.netty" level="error" additivity="true">
+        </Logger>
+    </Loggers>
+</Configuration>
