@@ -6,4 +6,7 @@ public class Constants {
 
     //TODO:admin token有效期
     public static final long ADMIN_TOKEN_VALIDITY = 10 * 60 * 1000L;
+
+    //TODO:验证码有效期
+    public static final long VERIFY_CODE_VALIDITY = 60 * 1000L;
 }

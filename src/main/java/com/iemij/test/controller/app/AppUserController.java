@@ -40,7 +40,7 @@ public class AppUserController extends BaseController {
             return Response.succInstance(token);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
-            return Response.errInstance();
+            return Response.errInstance(e.getMessage());
         }
     }
 }

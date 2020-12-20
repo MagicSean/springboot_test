@@ -8,7 +8,9 @@ public enum Code {
     SYSTEM_ERROR(-1, "系统繁忙"),
     SUCCESS(0, "成功"),
     NEED_LOGIN(10000, "请先登录"),
-    LOGIN_EXPIRE(10001, "登录超时")
+    LOGIN_EXPIRE(10001, "登录超时"),
+    MATCH_VERIFY_ERR(10002, "验证码错误"),
+    EXPIRE_VERIFY_ERR(10002, "验证码超时")
     ;
 
     public Integer code;

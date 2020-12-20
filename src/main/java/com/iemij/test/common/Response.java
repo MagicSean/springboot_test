@@ -24,6 +24,10 @@ public class Response<T> {
         return instance(Code.SYSTEM_ERROR);
     }
 
+    public static <T> Response<T> errInstance(String msg) {
+        return instance(Code.SYSTEM_ERROR,msg);
+    }
+
     public static <T> Response<T> instance(Code code) {
         return new Response<T>(code.code, code.msg, null);
     }

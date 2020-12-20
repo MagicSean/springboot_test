@@ -3,6 +3,7 @@ package com.iemij.test.controller.admin;
 import cn.hutool.core.convert.Convert;
 import com.iemij.test.common.Constants;
 import com.iemij.test.common.Response;
+import com.iemij.test.config.RedisKey;
 import com.iemij.test.controller.BaseController;
 import com.iemij.test.domain.CommonUser;
 import com.iemij.test.service.UserService;
@@ -43,12 +44,13 @@ public class AdminUserController extends BaseController {
             CommonUser commonUser = userService.adminLogin(account, password);
             Map<String, Object> claims = new HashMap<>();
             claims.put("uid", commonUser.getUid());
-            redisTemplate.opsForValue().set(request.getSession().getId(), Convert.toStr(commonUser.getUid()));//将用户id存入redis
-            redisTemplate.expire(Convert.toStr(commonUser.getUid()), Constants.ADMIN_TOKEN_VALIDITY, TimeUnit.MILLISECONDS);//设置有效期
+            String redisKey = RedisKey.uid(request.getSession().getId());
+            redisTemplate.opsForValue().set(redisKey, Convert.toStr(commonUser.getUid()));//将用户id存入redis
+            redisTemplate.expire(redisKey, Constants.ADMIN_TOKEN_VALIDITY, TimeUnit.MILLISECONDS);//设置有效期
             return Response.succInstance(commonUser);
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
-            return Response.errInstance();
+            return Response.errInstance(e.getMessage());
         }
     }
 
@@ -65,7 +67,7 @@ public class AdminUserController extends BaseController {
             return Response.succInstance(userService.getUserInfo(uid));
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
-            return Response.errInstance();
+            return Response.errInstance(e.getMessage());
         }
     }
 }
