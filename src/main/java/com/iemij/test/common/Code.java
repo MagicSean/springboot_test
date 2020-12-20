@@ -10,7 +10,8 @@ public enum Code {
     NEED_LOGIN(10000, "请先登录"),
     LOGIN_EXPIRE(10001, "登录超时"),
     MATCH_VERIFY_ERR(10002, "验证码错误"),
-    EXPIRE_VERIFY_ERR(10002, "验证码超时")
+    EXPIRE_VERIFY_ERR(10003, "验证码超时"),
+    SEND_VERIFY_TOO_OFEN_ERR(10003, "发送验证码过于频繁")
     ;
 
     public Integer code;

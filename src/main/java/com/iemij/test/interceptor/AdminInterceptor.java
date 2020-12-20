@@ -6,7 +6,6 @@ import com.iemij.test.common.Code;
 import com.iemij.test.common.Response;
 import com.iemij.test.config.RedisKey;
 import com.iemij.test.controller.admin.AdminUserController;
-import com.iemij.test.util.RedisUtil;
 import com.iemij.test.util.SpringBeanUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,11 +26,6 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
         Long uid = TypeUtils.castToLong(redisTemplate.opsForValue().get(redisKey));//从redis获取存储的用户id
         if (uid == null) {
             callback(response,Code.NEED_LOGIN);
-            return false;
-        }
-        boolean isExpire = RedisUtil.isExpire(redisTemplate,sessionId);
-        if (isExpire) {
-            callback(response,Code.LOGIN_EXPIRE);
             return false;
         }
         request.setAttribute("uid", uid);

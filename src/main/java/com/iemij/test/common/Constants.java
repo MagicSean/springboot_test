@@ -9,4 +9,13 @@ public class Constants {
 
     //TODO:验证码有效期
     public static final long VERIFY_CODE_VALIDITY = 60 * 1000L;
+
+    //TODO:验证码防刷存储数据有效期
+    public static final long VERIFY_DATA_VALIDITY = 24;
+
+    //TODO:X分钟内最多可发y要短信
+    public static final long VERIFY_CODE_TIME_SCOPE = 10 * 60 * 1000L;
+
+    //TODO:X分钟内最多可发y要短信
+    public static final long VERIFY_CODE_NUM_SCOPE = 5;
 }
