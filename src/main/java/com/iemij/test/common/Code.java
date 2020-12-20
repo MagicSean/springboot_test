@@ -6,7 +6,9 @@ import java.util.Map;
 public enum Code {
 
     SYSTEM_ERROR(-1, "系统繁忙"),
-    SUCCESS(0, "成功")
+    SUCCESS(0, "成功"),
+    NEED_LOGIN(10000, "请先登录"),
+    LOGIN_EXPIRE(10001, "登录超时")
     ;
 
     public Integer code;

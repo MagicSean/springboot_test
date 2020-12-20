@@ -1,6 +1,7 @@
 package com.iemij.test.config;
 
 import com.iemij.test.filter.CommonFilter;
+import com.iemij.test.interceptor.AdminInterceptor;
 import com.iemij.test.interceptor.TestInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -32,8 +33,7 @@ public class SpringMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new TestInterceptor())
+        registry.addInterceptor(new AdminInterceptor())
                 .addPathPatterns(interceptProperties.getSpecial()).excludePathPatterns(interceptProperties.getExclude());
     }
-
 }

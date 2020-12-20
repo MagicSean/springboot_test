@@ -1,10 +1,8 @@
 config:
   path:
-    #该路径下GET请求放行，其他拦截
-    normal:
     #该路径下任何类型请求均拦截
     special:
-      - /test/**
+      - /admin/**
     #该路径下任何请求均放行
     exclude:
-      - /test/test1
+      - /admin/user/login
