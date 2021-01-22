@@ -1,4 +1,4 @@
-package com.iemij.test.config;
+package com.iemij.test.common;
 
 public class RedisKey {
 

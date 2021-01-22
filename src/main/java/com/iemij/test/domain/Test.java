@@ -11,6 +11,7 @@ public class Test {
     @Id
     private Long id;
     private String name;
+    private Integer num;
 
     public Long getId() {
         return id;
@@ -26,5 +27,13 @@ public class Test {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
     }
 }

@@ -24,6 +24,14 @@ public class TestController extends BaseController{
     @Autowired
     private TestMapper testMapper;
 
+    @RequestMapping("/lock-test")
+    @ApiOperation(value = "测试同一时间改同一表的同一字段", httpMethod = "GET", tags = {tags})
+    public Response lockTest() {
+        int code = testMapper.updateNum();
+        LOGGER.info("lockTest:"+ code);
+        return Response.succInstance(code);
+    }
+
     @RequestMapping("/test")
     @ApiImplicitParam(paramType = "query", name = "id", value = "测试id", required = true, dataType = "Long", defaultValue = "1")
     @ApiOperation(value = "测试一个参数的接口", httpMethod = "GET", tags = {tags})

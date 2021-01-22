@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.util.TypeUtils;
 import com.iemij.test.common.Code;
 import com.iemij.test.common.Response;
-import com.iemij.test.config.RedisKey;
+import com.iemij.test.common.RedisKey;
 import com.iemij.test.controller.admin.AdminUserController;
 import com.iemij.test.util.SpringBeanUtil;
 import org.slf4j.Logger;

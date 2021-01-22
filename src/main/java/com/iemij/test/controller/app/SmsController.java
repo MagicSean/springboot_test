@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.iemij.test.common.Code;
 import com.iemij.test.common.Constants;
 import com.iemij.test.common.Response;
-import com.iemij.test.config.RedisKey;
+import com.iemij.test.common.RedisKey;
 import com.iemij.test.controller.BaseController;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
